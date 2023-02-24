@@ -1,4 +1,20 @@
 \documentclass[tikz]{standalone}
+
+\tikzset{
+    star/.pic={
+        \fill
+            (0,-1)
+            -- (0.3,-0.3)
+            -- (1,0)
+            -- (0.3,0.3)
+            -- (0,1)
+            -- (-0.3,0.3)
+            -- (-1,0)
+            -- (-0.3,-0.3)
+            -- cycle;
+    }
+}
+
 \begin{document}
 \begin{tikzpicture}
 \useasboundingbox (-1.5,-1.5) rectangle (1.5,1.5);
@@ -60,6 +76,20 @@
         -- (-0.003,0.03)
         arc (250:-70:{0.003/sin(20)})
         -- cycle;
+\end{scope}
+
+%% Moons and stars
+\begin{scope}
+    \fill 
+        (-60:0.5) circle (0.1)
+        (135:0.5) circle (0.05)
+        (-0.8,0.2) circle (0.05)
+        (0.9,0.3) circle (0.05)
+        (0.2,0.7) circle (0.02)
+        (-0.2,0.9) circle (0.1)
+        (0.6,0.8) pic [rounded corners=0.25pt, scale=0.05] {star}
+        (-1.1,0.6) pic [rounded corners=0.25pt, scale=0.05] {star}
+        (0.8,-0.3) pic [rounded corners=0.25pt, scale=0.05] {star};
 \end{scope}
 \end{tikzpicture}
 \end{document}
